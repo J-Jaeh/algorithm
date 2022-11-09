@@ -12,8 +12,7 @@ def find_max_occurred_alphabet(string):
     max_occurrence = 0
     max_alphabet_index = 0
 # 음... 이해가 안된다..
-    for index in range(len(alphabet_occurrence_array)):
-
+    for index in range(len(alphabet_occurrence_array)): #인덱스 번호를 출력하는..코드
         alphabet_occurrence = alphabet_occurrence_array[index]
         if alphabet_occurrence > max_occurrence:
             max_occurrence = alphabet_occurrence
