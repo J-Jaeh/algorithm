@@ -36,6 +36,6 @@ class Solution {
         set_one.retainAll(set_two);
         set_one.retainAll(set_three);
         
-        return compare_size_list - set_one_sum.size() - set_one.size();
+        return compare_size_list - set_one_sum.size()- set_one.size();
     }
 }
