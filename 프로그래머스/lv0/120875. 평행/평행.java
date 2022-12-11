@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 class Solution {
- public int solution(int[][] dots) {
+  public int solution(int[][] dots) {
         int answer = 0;
 
         ArrayList<Integer> xDots = new ArrayList<>(Arrays.asList(dots[0][0],dots[1][0],dots[2][0],dots[3][0]));
@@ -28,12 +28,6 @@ class Solution {
         double gradientCaseThree = (doubleYdots.get(3)- doubleYdots.get(2))/(doubleXdots.get(3)-doubleXdots.get(1));
         double gradientCaseFlour = (doubleYdots.get(1)- doubleYdots.get(0))/(doubleXdots.get(2)-doubleXdots.get(0));
 
-        double gradientCaseFive = (doubleYdots.get(3)- doubleYdots.get(2))/(doubleXdots.get(2)-doubleXdots.get(0));
-        double gradientCaseSix = (doubleYdots.get(1)- doubleYdots.get(0))/(doubleXdots.get(3)-doubleXdots.get(1));
-
-        double gradientCaseSeven = (doubleYdots.get(3)- doubleYdots.get(1))/(doubleXdots.get(1)-doubleXdots.get(0));
-        double gradientCaseEight = (doubleYdots.get(2)- doubleYdots.get(0))/(doubleXdots.get(3)-doubleXdots.get(2));
-
         double gradientCaseNine = (doubleYdots.get(1)- doubleYdots.get(0))/(doubleXdots.get(1)-doubleXdots.get(0));
         double gradientCaseTen = (doubleYdots.get(3)- doubleYdots.get(2))/(doubleXdots.get(3)-doubleXdots.get(2));
 
@@ -43,24 +37,11 @@ class Solution {
         String restrictCaseThree = String.format("%5f", gradientCaseThree);
         String restrictCaseFlour = String.format("%5f", gradientCaseFlour);
 
-        String restrictCaseFive = String.format("%5f", gradientCaseFive);
-        String restrictCaseSix = String.format("%5f", gradientCaseSix);
-
-        String restrictCaseSeven = String.format("%5f", gradientCaseSeven);
-        String restrictCaseEight = String.format("%5f", gradientCaseEight);
 
         String restrictCaseNine = String.format("%5f", gradientCaseNine);
         String restrictCaseTen = String.format("%5f", gradientCaseTen);
 
-        if(restrictCaseOne.equals(restrictCaseTwo)||restrictCaseThree.equals(restrictCaseFlour)){
-            ++answer;
-        }else if(restrictCaseFive.equals(restrictCaseSix)||restrictCaseSeven.equals(restrictCaseEight)){
-            ++answer;
-        }else if(restrictCaseOne.equals(restrictCaseThree)||restrictCaseTwo.equals(restrictCaseFlour)){
-            ++answer;
-        }else if(restrictCaseFive.equals(restrictCaseSeven)||restrictCaseSix.equals(restrictCaseEight)){
-            ++answer;
-        }else  if(restrictCaseNine.equals(restrictCaseTen)){
+        if(restrictCaseOne.equals(restrictCaseTwo)||restrictCaseThree.equals(restrictCaseFlour)||(restrictCaseNine.equals(restrictCaseTen))){
             ++answer;
         }
         return answer;
