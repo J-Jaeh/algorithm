@@ -14,7 +14,7 @@ class Solution {
         }
            if (boardN < 3 && exceptionCase != 0) {
             return countZero;
-        } else if (boardN == 1) {         //아 ㅋㅋ case8을 크기가 1일때 case10은 크기가 2일때구나
+        } else if (boardN == 1) {         //case8은 크기가 1일때 case10은 크기가 2일때구나
             return 1;
         } else if(boardN==2){
             return 4;
