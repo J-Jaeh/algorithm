@@ -8,6 +8,7 @@ class Solution {
         for (int number : numbers) {
             newNumbers.add(number);
         }
+       
         newNumbers.sort(Comparator.naturalOrder());
         
         return newNumbers.get(newNumbers.size()-1)*newNumbers.get(newNumbers.size()-2); 
