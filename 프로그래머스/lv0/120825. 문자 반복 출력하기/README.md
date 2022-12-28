@@ -1,10 +1,10 @@
 # [level 0] 문자 반복 출력하기 - 120825 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120825?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120825) 
 
 ### 성능 요약
 
-메모리: 81.7 MB, 시간: 0.09 ms
+메모리: 72 MB, 시간: 0.10 ms
 
 ### 구분
 
