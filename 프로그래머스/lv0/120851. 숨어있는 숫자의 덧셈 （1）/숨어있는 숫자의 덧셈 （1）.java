@@ -4,8 +4,8 @@ class Solution {
         int answer = 0;
         for (char aChar : chars) {
             if(aChar<60){
-                answer+= (aChar-48);
-            }
+                answer+= (aChar-'0'); //숫자 0 =아스키코드로 48
+            }   //자동형변환
         }
         return answer;
     }
