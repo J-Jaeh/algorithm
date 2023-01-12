@@ -10,7 +10,7 @@ class Solution {
         newMy_string[num2] = changeNum1;
 
         for (char c : newMy_string) {
-            answer.append((char)c);
+            answer.append(c);
         }
         
         return answer;
