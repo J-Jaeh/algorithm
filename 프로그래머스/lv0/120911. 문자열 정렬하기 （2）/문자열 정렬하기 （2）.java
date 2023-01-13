@@ -18,7 +18,7 @@ class Solution {
         }
         //소문자 변경완료
         
-        lowerList.sort(Comparator.naturalOrder());
+        lowerList.sort(Comparator.naturalOrder());//어레이리스트쓸때
 
         for (Character character : lowerList) {
             answer.append(character);
