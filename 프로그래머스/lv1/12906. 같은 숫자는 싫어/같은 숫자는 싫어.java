@@ -1,17 +1,12 @@
 import java.util.*;
 
 public class Solution {
-    public ArrayList<Integer> solution(int []arr) {
+    public int[] solution(int []arr) {
+        int[] answer = {};
+        
+        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
+        System.out.println("Hello Java");
 
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        int sameValue = -1;
-        for (int i : arr) {
-           if(sameValue!=i){
-               arrayList.add(i);
-               sameValue=i;
-           }
-        }
-        return arrayList;
-       
+        return answer;
     }
 }
