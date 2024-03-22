@@ -2,14 +2,9 @@
 import sys
 
 sys.setrecursionlimit(10**9)
-##
-# top_root 값은 기억해.
-# 작으면 왼쪽 top_root  크면 오른쪽,
 
-# 그리고 기본으로 작은게 나올때까지 왼쪽으로 슈슈슈슈슉 스택 이용가능함 ? 가능할듯
 node_stack = []
-##
-# s_t = {}
+
 def input():
     return sys.stdin.readline().rstrip()
 input_list=[]
@@ -19,30 +14,28 @@ while True:
     except:
         break
 
-# 시작은 전체배열 0,1, -1-> 업데이트해서 넣어줘야함
-def postOrder(arr):
-    if len(arr) == 0: # 배열이 비어 있다면 그대로 종료
-        return
-    if len(arr) == 1: # 배열에 값이 하나 있다면 값 출력한 후 종료
-        print(arr[0])
+
+
+def post_order(start, end, pre_list):
+    if start > end:
         return
 
-    idx = len(arr)# 일단 처음에는 끝값.
-    # 루트노드 제외하고 루트노드보다 큰값을 찾아서 오른편업데이트
-    for i in range(1, len(arr)):
-        if arr[i] > arr[0]:
-            idx = i
+    root = pre_list[start]  # 루트 값
+    point = None
+
+    # for 문으로 변환
+    for i in range(start + 1, end + 1):
+        if pre_list[i] > root:
+            point = i
             break
+    # point가 None이면, root보다 큰 값이 없는 것이므로, point를 end + 1로 설정
+    if point is None:
+        point = end + 1
+    post_order(start + 1, point - 1, pre_list)  # 왼쪽 서브 트리 탐색
+    # 오른쪽 트리 리턴이 끝나면 그제야 ~ 실행됨 . 아 맞네...
+    post_order(point, end, pre_list)  # 오른쪽 서브 트리 탐색
 
-    # 왼쪽 자식 노드에 대하여 재귀 호출
-    if idx > 1:
-        postOrder(arr[1:idx])
+    print(root)  # 루트 출력
 
-    # 오른쪽 자식 녿느에 대하여 재귀 호출
-    if idx < len(arr):
-        postOrder(arr[idx:])
 
-    # 부모 노드의 값 출력
-    print(arr[0])
-
-postOrder(input_list)
+post_order(0, len(input_list) - 1, input_list)
