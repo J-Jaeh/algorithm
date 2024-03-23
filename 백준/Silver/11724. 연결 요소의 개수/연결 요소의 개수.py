@@ -27,7 +27,9 @@ for i in range(len(vis)):
     if vis[i]:
         Q = deque([i])
         count += 1
-        vis[i]=False
+        vis[i]=False # 중요한애다 !
+        if not link_dot[i]:
+            continue
         while Q:
             c=Q.popleft()
             for x in link_dot[c]:
