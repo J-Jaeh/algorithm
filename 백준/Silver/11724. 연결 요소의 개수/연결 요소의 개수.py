@@ -22,18 +22,18 @@ for _ in range(M):
 vis[0]=False
 # 연결을 양방향으로 해주니까... 뭐라도 연결 되어있겠쥬?
 count=0
-
-for i in range(len(vis)):
-    if vis[i]:
-        Q = deque([i])
-        count += 1
-        vis[i]=False
-        while Q:
-            c=Q.popleft()
-            for x in link_dot[c]:
-                if vis[x]:
-                    Q = deque([x])
-                    vis[x]=False
-
+while sum(vis)!=0:
+    for i in range(len(vis)):
+        if vis[i]:
+            Q = deque([i])
+            vis[i]=False
+            break
+    while Q:
+        c=Q.popleft()
+        for x in link_dot[c]:
+            if vis[x]:
+                Q = deque([x])
+                vis[x]=False
+    count+=1
 
 print(count)
