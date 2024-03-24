@@ -40,7 +40,7 @@ end_y=end_dot[1]
 [q.append(x) for x in water_dot]
 dx=[-1,1,0,0]
 dy=[0,0,-1,1]
-
+pivot = 0
 while q:
     # print(*time_map, sep='\n')
     # print(*td_map, sep='\n')
@@ -60,16 +60,19 @@ while q:
                     time_map[nx][ny]=new_cost
                     q.append((nx, ny))
                     if ny == end_y and nx == end_x:
+                        pivot = 1
                         break
             elif td_map[cx][cy]=='*' and td_map[nx][ny] != 'D' and td_map[nx][ny]!='*':
                 td_map[nx][ny]='*'
                 time_map[nx][ny]=-1
                 q.append((nx,ny))
-    else:
-        continue
-    break
-else:
-    print("KAKTUS")
+    if pivot:
+        break
+
+if pivot:
+    print(new_cost)
     exit()
-print(new_cost)
+print("KAKTUS")
+
+
 
