@@ -1,5 +1,6 @@
 # for 문 돌면서 전체 탐색하고 방문트리를 초기화하는 개념으로 하면 될듯한데
 import sys
+sys.setrecursionlimit(10**6)
 def input():
     return sys.stdin.readline().rstrip()
 
@@ -16,35 +17,34 @@ for _ in range(N-1):
     graph[a].append(b)
     graph[b].append(a)
 
-
-def bfs(n,visit,count):
-    visit[n]=False
-    rv=0
-    if S_t_E[n-1]=="1":
-        # print(*S_t_E)
-        count+=1
-        # print("들어옴")
-        if count==2:
-            # print("들어옴종료조건")
-            return 1
-
+def bfs(n)->int:
+    count=0
+    # visit[n]=False
     for x in graph[n]:
-        if visit[x]:
-          # print(f'{n=} 에서 나온노드 {x=}')
-          # visit[x]=False
-          # print(*visit)
-          rv+=bfs(x,visit,count)
-    return rv
-
+        if S_t_E[x - 1] == "0":
+            if visit[x]:
+                 visit[x] = False
+                 count +=bfs(x)
+        else:
+            if S_t_E[x-1]=="1":
+                count+=1
+    return count
+## 컨셉은 이해했다
+## 시작노드에서 시작하는것이아닌 중심노드에서 갈수있는 노드의 갯수를 카운트 하는방식이다
+visit = [True for _ in range(N + 1)]
+visit[0] = False
 answer=0
 for i in range(1,N+1):
-    if S_t_E[i-1]=="1":
-        # bfs 시작 할때마다 방문 배열 초기화 시켜주기
-        visit = [True for _ in range(N + 1)]
-        visit[0] = False
-        #bfs 돌리기
-        #실내거점 카운트
-        count=0
-        answer+=bfs(i,visit,count)
+    # 실외 노드인 것만 돌려서 주변 노드수 카운트해서 경우의 수 계산 공식에 넣기
+    if S_t_E[i-1]=="0":
+       if visit[i]:
+            visit[i]=False
+            num=bfs(i)
+            answer+=(num)*(num-1)
+    #1인경우 주변노드 실내 탐색해서 카운트하기
+    else:
+        for k in graph[i]:
+            if S_t_E[k-1]=="1":
+                answer+=1
 
 print(answer)
