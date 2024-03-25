@@ -54,7 +54,8 @@ for i in range(N):
 
 
 
-sorted_list=sorted(answer)
+# sorted_list=sorted(answer)
 # print(*dangi_visited,sep="\n")
+answer.sort()
 print(call_count)
-print(*sorted_list,sep="\n")
+print(*answer,sep="\n")
