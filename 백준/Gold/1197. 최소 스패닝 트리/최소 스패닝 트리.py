@@ -20,9 +20,9 @@ def union_parent(parent,a,b):
     a= find_parent(parent,a)
     b= find_parent(parent,b)
     if b<a:
-        parent[b]=a
-    else:
         parent[a]=b
+    else:
+        parent[b]=a
 
 # 간선 정보 담을 리스트와 최소 신장 트리 계산 변수 정의
 
