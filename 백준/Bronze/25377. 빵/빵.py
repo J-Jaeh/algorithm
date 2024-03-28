@@ -11,7 +11,7 @@ a_list=[]
 
 for _ in range(N):
  A,B = map(int,input().split())
- if A<B:
+ if A<=B:
     a_list.append(B)
 
 if not a_list:
