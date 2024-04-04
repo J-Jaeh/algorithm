@@ -1,6 +1,5 @@
 # 신나는 함수실행
 # then? ?
-# 시간초과
 import sys
 def input():
     return sys.stdin.readline().rstrip()
@@ -30,9 +29,7 @@ if __name__ =='__main__':
         if a==-1 and b==-1 and c==-1:
             exit()
         else:
-            i_a,i_b,i_c=a,b,c
-            # if a > 20 or b > 20 or c > 20:i_a,i_b,i_c=20,20,20
-            print(f'w({a}, {b}, {c}) = {w(i_a,i_b,i_c)}')
+            print(f'w({a}, {b}, {c}) = {w(a,b,c)}')
 
 
     # 인덱스 에러 1 1 21 에서남
