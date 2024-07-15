@@ -1,13 +1,14 @@
 import sys
 
-a,b=map(int,input().split())
+def input():
+    return  sys.stdin.readline().rstrip()
 
-c =[]
-# 배열이 완성됨?
-arr = list(map(int,sys.stdin.readline().split()))
 
-for n in arr:
-    if n<b :
-        c.append(n)
+def sol(arr:list,a:int)->list:
+   answer = [x for x in list if x<a]
+   return answer
 
-print(*c)
+if __name__ == '__main__':
+    N,X = map(int,input().split())
+    list = list(map(int,input().split()))
+    print(*sol(list,X))
