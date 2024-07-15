@@ -1,4 +1,12 @@
-a = int(input())
+import sys
 
-for i in range(9):
-    print(str(a)+" * "+str(i+1)+" = "+str(a*(i+1)))
+def input():
+    return sys.stdin.readline().rstrip()
+
+
+def sol(a:int):
+    for x in range(1,10):
+        print(str(a) + ' * ' + str(x) + ' = ' + str(a*x))
+
+if __name__ == '__main__':
+    sol(int(input()))
