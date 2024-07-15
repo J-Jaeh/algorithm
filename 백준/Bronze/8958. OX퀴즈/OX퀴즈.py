@@ -1,15 +1,23 @@
-def solve(string):
-    arr = list(string)
-    sum=0
-    weight = 1
-    for n in arr:
-        if n =="O":
-            sum+=weight
-            weight+=1
-        else:
-            weight=1
-    return sum
-a = int(input())
+import sys
 
-for i in range(a):
-    print(solve(input()))
+def input():
+    return sys.stdin.readline().rstrip()
+
+def sol(arr:str)->int:
+    answer=0
+    temp=1
+    for x in arr:
+        if x == 'O':
+            answer+=temp
+            temp+=1
+        else:
+            temp=1
+
+    return answer
+
+
+if __name__ == '__main__':
+    n = int(input())
+    for _ in range(n):
+        inputV=input()
+        print(sol(inputV))
