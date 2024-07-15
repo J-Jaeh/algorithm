@@ -1,6 +1,14 @@
 import sys
 
-x,y,w,h = map(int,sys.stdin.readline().split())
-min_x = x if x<w-x else w-x
-min_y = y if y<h-y else h-y
-print(min_x) if min_x<min_y else print(min_y)
+def input():
+    return sys.stdin.readline().rstrip()
+
+def sol(x:int,y:int,w:int,h:int)->int:
+    x_min = min(w-x,x)
+    y_min = min(h-y,y)
+    return min(x_min,y_min)
+
+
+if __name__ == '__main__':
+    x,y,w,h = map(int,input().split())
+    print(sol(x, y, w, h))
