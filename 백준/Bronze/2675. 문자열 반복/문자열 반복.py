@@ -1,12 +1,24 @@
-def solve(a:list) -> str:
-    n =int(a[0])
-    sol=''
-    for i in list(a[1]):
-        sol+=i*n
-    return sol
+import sys
 
-a = int(input())
 
-for i in range(a):
-    arr = list(map(str,input().split()))
-    print(solve(arr))
+def input():
+    return sys.stdin.readline().rstrip()
+
+
+
+def sol(num:str , repeat:str)->str:
+    answer=''
+    for char in repeat:
+        answer+=(char*int(num))
+    return answer
+
+
+
+
+if __name__ == '__main__':
+    _x = int(input())
+    for i in range(0,_x):
+        num , repeat = map(str,input().split())
+        print(sol(num,repeat))
+
+
