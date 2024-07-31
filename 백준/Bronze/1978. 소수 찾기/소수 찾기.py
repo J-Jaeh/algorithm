@@ -1,25 +1,31 @@
 import sys
-import math
-## < 소수구하기 개선하기>
-# 개선 1 . n이 소수인지는 n보다 작은 소수들로만 판단해서 나누어 떨어지는지 판단하면된다
-#          -> 소수라면 2부터 n-1까지 어떤 소수로도 나누어떨어지지 않는다
 
 
-
-n =int(input())
-
-arr = list(map(int,sys.stdin.readline().split()))
-
-def is_prime_num(n):
-    for i in range(2, int(math.sqrt(n))+1): # n의 제곱근을 정수화 시켜준 후 + 1
-        if n % i == 0:
-            return False
-
-    return True
-count=0
-
-for a in arr:
-    if is_prime_num(a)and a!=1:count+=1
-print(count)
+def input():
+    return sys.stdin.readline().rstrip()
 
 
+# 채만들기
+is_prime=[True]*1001
+## 0과 1은 소수가 아니다 !
+is_prime[0]=False
+is_prime[1]=False
+
+start_prime=2
+while(start_prime * start_prime<1001):
+    if is_prime[start_prime]:
+        for i in range(start_prime*start_prime,1001,start_prime):
+            is_prime[i]=False
+    start_prime+=1
+
+
+def sol(arr:list)->int:
+    count=0
+    for x in arr:
+        if is_prime[x]:
+            count+=1
+    return count
+
+if __name__ == '__main__':
+    _x=input()
+    print(sol(list(map(int,input().split()))))
