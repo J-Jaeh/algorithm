@@ -1,35 +1,33 @@
+import sys
 
-prime_list = [True]*10000
-prime_list[0] = False
-prime_list[1] = False
-for i in range(2,10000):
-    if prime_list[i]:
-        j=2
-        while i*j <10000:
-            prime_list[i*j] = False
-            j+=1
-def gold(n):
-    return_list=[]
-    for i in range(2,(n//2)+1):
-        arr = []
-        if prime_list[i]:
-            a=n-i
-            if prime_list[a]:
-                arr.append(i)
-                arr.append(a)
-                return_list.append(arr)
-    return return_list
-
-n= int(input())
+def input():
+    return  sys.stdin.readline().rstrip()
 
 
-for i in range(n):
-    a=int(input())
-    check_List=gold(a)
-    min=check_List[0]
-    for i in check_List[1:]:
-        min_a=min[0]
-        min_b=min[1]
-        if (min_b-min_a)>i[1]-i[0]:
-            min=i
-    print(*min)
+is_p=[True]*10001
+is_p[0]=False
+is_p[1]=False
+
+s_p = 2
+while(s_p * s_p <10001):
+    if is_p[s_p]:
+        for i in range(s_p * s_p,10001,s_p):
+            is_p[i]=False
+    s_p +=1
+
+
+def sol(x:int)-> list:
+    # x는 짝수인데 .. 이제 짝을 구해야겠쥬?
+    rp = x//2
+    lp = x//2
+    while lp>0 and rp<x:
+        if is_p[rp] and is_p[lp]:
+           return [lp, rp]
+        lp -=1
+        rp +=1
+
+
+if __name__ == '__main__':
+    re = int(input())
+    for _ in range(0,re):
+        print(*sol(int(input())))
