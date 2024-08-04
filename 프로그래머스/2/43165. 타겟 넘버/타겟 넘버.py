@@ -1,10 +1,9 @@
-import queue
-
+from collections import deque
 
 # 모든 경우 탐색이니까 dfs..! 재귀를 이용해보자 근데 재귀 한계를 넘어가면 어떻게 하징 ..
 def solution(numbers:list, target:int):
 
-    return dfs(numbers,0,0,target)
+    return bfs(numbers,target)
 
 
 def dfs(numbers:list, current:int,index:int,target:int)->int:
@@ -23,3 +22,18 @@ def dfs(numbers:list, current:int,index:int,target:int)->int:
     sum_m = dfs(numbers,current-numbers[index],index+1,target)
 
     return sum_p+sum_m
+
+
+def bfs(numbers:list,target:int)->int:
+    q = deque([(0,0)]) # (현재 합, 인덱스)
+    count=0
+
+    while q:
+        sum,index=q.popleft()
+        if index == len(numbers):
+            if sum == target:
+                count+=1
+        else:
+            q.append((sum+numbers[index],index+1))
+            q.append((sum-numbers[index],index+1))
+    return count
