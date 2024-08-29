@@ -1,52 +1,53 @@
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-    static ArrayList<Integer>[] A;    /// 배열선언임 !
-    static boolean visited[];
+    static ArrayList<ArrayList<Integer>> A = new ArrayList<>();
+    static boolean[] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
-        A= new ArrayList[n+1];
         visited = new boolean[n+1];
-        for(int i=1;i<n+1;i++){
-            A[i] = new ArrayList<Integer>();
+        visited[0]=true;
+        // 리스트 초기화
+        for (int i = 0; i <= n; i++) {
+            A.add(new ArrayList<>());
         }
-
-        for(int i =0;i<m;i++){
-            st = new StringTokenizer(br.readLine());
+        for(int i=0;i<m;i++){
+            st =new StringTokenizer(br.readLine());
             int s = Integer.parseInt(st.nextToken());
             int e = Integer.parseInt(st.nextToken());
-
-            A[s].add(e);
-            A[e].add(s);
+            //양방향 흠 ..!
+            A.get(s).add(e);
+            A.get(e).add(s);
         }
-        int count =0;
-        for (int i=1;i<n+1;i++){
-            if(!visited[i]){
-                count++;
-                DFS(i);
-            }
-        }
-        System.out.println(count);
-    }
-    private static void DFS( int v){
-        if(visited[v]) return;
-        visited[v]=true;
-        for(int i : A[v]){
-            if(!visited[i]){
-                DFS(i);
-            }
-        }
-
+        int countDFS=0;
+         for (int i =1;i<n+1;i++){
+             if(!visited[i]){
+                 countDFS++;
+                 DFS(i);
+             }
+         }
+        System.out.println(countDFS);
     }
 
+    private static void DFS(int i){
+        if(visited[i]) return;
+
+        visited[i]=true;
+        for (Integer integer : A.get(i)) {
+            if(!visited[integer]){
+                DFS(integer);
+            }
+        }
+
+    }
 }
