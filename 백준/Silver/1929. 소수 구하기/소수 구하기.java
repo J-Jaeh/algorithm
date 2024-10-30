@@ -1,37 +1,23 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] argus) throws Exception{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int M = sc.nextInt();
+        int N = sc.nextInt();
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        int a = Integer.parseInt(st.nextToken());
-        int b = Integer.parseInt(st.nextToken());
-
-        int[] chae = new int[b+1];
-
-        Queue<Integer> loop = new LinkedList<>();
-       
-        for(int i =2;i<b+1;i++){
-            if(chae[i]==0){
-                for(int j=i;j<b+1;j+=i){
-                    chae[j]=1;
-                }
-                loop.offer(i);
+        int[] chae = new int[N+1];
+        chae[0] =1;
+        chae[1] =1;
+        for(int i =2 ; i<=Math.sqrt(N);i++){
+            if(chae[i]==1) continue;
+            int start = i+i;
+            for(;start<=N;start+=i){
+                chae[start]=1;
             }
         }
-        while (a>loop.peek()){
-            loop.poll();
+        for(;M<=N;M++){
+            if(chae[M]==0) System.out.println(M);
         }
-
-        while (!loop.isEmpty()){
-            System.out.println(loop.poll());
-        }
-
     }
-
 }
