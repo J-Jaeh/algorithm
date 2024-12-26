@@ -1,0 +1,8 @@
+-- 코드를 입력하세요
+SELECT 
+    SUBSTRING(product_code,1,2) AS 'CATEGORY',
+    COUNT(*) AS 'PRODUCTS'
+FROM PRODUCT
+# SUBSTRING(열,시작,길이)
+GROUP BY SUBSTRING(product_code,1,2)
+ORDER BY 'CATEGORY'
