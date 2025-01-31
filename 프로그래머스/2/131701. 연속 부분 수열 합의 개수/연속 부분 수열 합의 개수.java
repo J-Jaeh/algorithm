@@ -12,12 +12,16 @@ public class Solution {
         HashSet<Integer> set = new HashSet<>();
 
         for(int lens=1;lens<elements.length+1;lens++){
-            for(int i=0;i<elements.length;i++){
-                int n=0;
-                for(int j=i;j<i+lens;j++){
-                    n+=exElements[j];
-                }
-                set.add(n);
+            int sum=0;
+            for(int i =0;i<lens;i++){
+                sum+=exElements[i];
+            }
+            set.add(sum);
+            for(int j=1;j<elements.length;j++){
+                // 7 9 1 1 4 
+//                System.out.println(sum+" : "+ (j-1) + "   -----     "+ (lens+j-1));
+                sum=sum-exElements[j-1]+exElements[lens+j-1];
+                set.add(sum);
             }
         }
         return set.size();
